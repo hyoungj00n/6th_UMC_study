@@ -1,9 +1,15 @@
 import express from 'express';
 import { testRouter } from '../srcs/routes/testRoute.js';
 import { response } from './response.js';
+import { specs, swaggerUi } from "./swagger.js";
 
 const app = express();
 
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(specs, { explorer: true })
+);
 app.use('/',testRouter);
 
 app.use((err, req, res, next) => {

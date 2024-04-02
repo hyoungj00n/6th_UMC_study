@@ -1,0 +1,21 @@
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+export const options = {
+    swaggerDefinition : {
+        info :{
+            title : 'UMC Node study',
+            version : '1.0.0',
+            description : "Faceticker API"
+        },
+        servers : [
+            {
+                url : 'http://localhost:3000',
+            },
+        ]
+    },
+    apis : ['./config/swagger.js', './srcs/routes/*.js',]
+};
+
+const specs = swaggerJSDoc(options);
+
+export {specs, swaggerUi};
