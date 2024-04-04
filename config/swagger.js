@@ -13,7 +13,7 @@ export const options = {
             },
         ]
     },
-    apis : ['./config/swagger.js', './srcs/routes/*.js',]
+    apis : ['./config/swagger.js', './srcs/routes/*.js','./config/swagger/*']
 };
 
 const specs = swaggerJSDoc(options);
