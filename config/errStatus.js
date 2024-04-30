@@ -7,4 +7,5 @@ export const errStatus = {
     //member
     EMAIL_ALREADY_EXIST: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2001", "message": "이미 존재하는 이메일입니다." },
     PARAMETER_IS_WRONG : {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2002", "message": "회원가입 잘못된 데이터를 입력했습니다."},
+    LOGIN_FAIL: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2003", "message": "로그인 실패입니다."},
 }

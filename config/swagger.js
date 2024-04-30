@@ -5,7 +5,7 @@ export const options = {
         info :{
             title : 'UMC Node study',
             version : '1.0.0',
-            description : "Faceticker API"
+            description : "UMC API"
         },
         servers : [
             {

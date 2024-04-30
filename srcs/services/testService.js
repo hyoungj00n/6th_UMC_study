@@ -1,4 +1,4 @@
-import { errorStatus } from "../../config/errStatus";
+import { errStatus } from "../../config/errStatus";
 import { testResponseDTO,flagResponseDTO } from "../dtos/testResponseDTO";
 import { BaseError } from "../../config/error";
 
@@ -8,7 +8,7 @@ export const getTest = () => {
 
 export const checkFlag = (flag) => {
     if(flag == 1){
-        throw new BaseError(errorStatus.INTERNAL_SERVER_ERROR);
+        throw new BaseError(errStatus.INTERNAL_SERVER_ERROR);
     } 
     else{
         return flagResponseDTO(flag);
