@@ -50,16 +50,18 @@ export const login = async (body) => {
     const page = await browser.newPage();
 
     try {
+        //홈페이지 접속
         await page.goto('https://ecampus.smu.ac.kr/login/index.php');
-
+        //학번, 비번 입력
         await page.type('#input-username', body.username);
         await page.type('#input-password', body.password);
-
+        //로그인 버튼 클릭
         await page.click('input[type="submit"]');
 
-        
+        //로딩 대기
         await page.waitForNavigation();
         console.log(page.url());
+        //로그인 실패, 성공 url로 구분
         if (page.url() === 'https://ecampus.smu.ac.kr/login.php?errorcode=3') {
             console.log("fail");
         } else {

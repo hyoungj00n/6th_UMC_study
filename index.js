@@ -1,14 +1,29 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
 import cors from 'cors';
-import { testRouter } from './srcs/routes/testRoute.js'
-import { memberRouter } from './srcs/routes/memberRoute.js'
-import { response } from './config/response.js'
+import { memberRouter } from './srcs/routes/memberRoute.js';
+import { response } from './config/response.js';
 import { specs, swaggerUi } from "./config/swagger.js";
 import { errStatus } from './config/errStatus.js'
 
-const app = express();
+
 dotenv.config();    // .env 파일 사용 (환경 변수 관리)
+const app = express();
+
+let server = http.createServer(app);
+let io = new Server(server);
+
+io.on('connection', (socket) => {
+  //접속한 클라이언트 소켓ID 단, 새탭으로 들어오면 바뀐다.
+    console.log('접속한 클라이언트의 socketid'+socket.id)
+  
+    socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+    });
+})
+
 
 app.use(
     cors({
@@ -32,7 +47,12 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(specs, { explorer: true })
 );
-app.use('/',testRouter);
+
+
+app.get('/chat', function(req, res) {
+  res.sendFile(__dirname + '/public/chat.html');
+});
+
 
 app.use('/api/members',memberRouter);
 
@@ -44,8 +64,6 @@ app.use((err, req, res, next) => {
 });
 
 
-
-
-app.listen(process.env.SERVER_PORT, () => {
+server.listen(process.env.SERVER_PORT, () => {
     console.log(`server is ready, ${process.env.SERVER_PORT}`);
 });

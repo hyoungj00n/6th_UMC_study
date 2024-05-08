@@ -19,7 +19,8 @@
     "http-status-code": "^2.1.0",
     "http-status-codes": "^2.3.0",
     "mysql2": "^3.9.2",
-    "puppeteer": "^22.7.1"
+    "puppeteer": "^22.7.1",
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",
