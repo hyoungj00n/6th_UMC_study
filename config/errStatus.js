@@ -5,7 +5,8 @@ export const errStatus = {
     INTERNAL_SERVER_ERROR: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "COMMON000", "message": "서버 에러, 관리자에게 문의 바랍니다." },
     
     //member
-    EMAIL_ALREADY_EXIST: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2001", "message": "이미 존재하는 이메일입니다." },
-    PARAMETER_IS_WRONG : {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2002", "message": "회원가입 잘못된 데이터를 입력했습니다."},
-    LOGIN_FAIL: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER2003", "message": "로그인 실패입니다."},
+    EMAIL_ALREADY_EXIST: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER4001", "message": "이미 존재하는 이메일입니다." },
+    PARAMETER_IS_WRONG : {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER4002", "message": "회원가입 잘못된 데이터를 입력했습니다."},
+    LOGIN_FAIL: {status: StatusCodes.INTERNAL_SERVER_ERROR, "isSuccess": false, "code": "MEMBER4003", "message": "로그인 실패입니다."},
+    MEMBER_NOT_FOUND: {status: StatusCodes.BAD_REQUEST, "isSuccess": false, "code": "MEMBER4004", "message": "존재하지 않는 유저입니다." }
 }

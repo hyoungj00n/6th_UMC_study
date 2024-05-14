@@ -7,23 +7,23 @@ import { memberRouter } from './srcs/routes/memberRoute.js';
 import { response } from './config/response.js';
 import { specs, swaggerUi } from "./config/swagger.js";
 import { errStatus } from './config/errStatus.js'
+import { io } from './socket.js';
+import mongoose from 'mongoose';
 
+mongoose.connect(process.env.MONGO_DB)
+.then(() => console.log("connected to database"));
 
 dotenv.config();    // .env 파일 사용 (환경 변수 관리)
 const app = express();
 
 let server = http.createServer(app);
-let io = new Server(server);
+let socket = new Server(server,{
+  cors : {
+    origin : "http://localhost:3000"
+  }
+});
 
-io.on('connection', (socket) => {
-  //접속한 클라이언트 소켓ID 단, 새탭으로 들어오면 바뀐다.
-    console.log('접속한 클라이언트의 socketid'+socket.id)
-  
-    socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
-    });
-})
-
+io(socket);
 
 app.use(
     cors({
@@ -48,10 +48,6 @@ app.use(
     swaggerUi.setup(specs, { explorer: true })
 );
 
-
-app.get('/chat', function(req, res) {
-  res.sendFile(__dirname + '/public/chat.html');
-});
 
 
 app.use('/api/members',memberRouter);
