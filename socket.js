@@ -6,6 +6,11 @@ export const io = (io) => {
     //접속한 클라이언트 소켓ID 단, 새탭으로 들어오면 바뀐다.
     console.log("접속한 클라이언트의 socketid" + socket.id);
 
+    socket.on('joinRoom', async (room) =>{     // joinRoom을 클라이언트가 emit 했을 시
+      let roomName = room;
+      socket.join(roomName);    // 클라이언트를 msg에 적힌 room으로 참여 시킴
+  });
+
     socket.on("newUser" ,async (userName, cb) => {
         console.log("새로운 유저: ", userName);
         //유저 저장
@@ -25,6 +30,7 @@ export const io = (io) => {
 
         io.emit("message", newMessage)
     })
+
     //연결이 종료된 경우
     socket.on("disconnect", () => {
       // 나가는 사람을 제외한 나머지 유저에게 메시지 전송

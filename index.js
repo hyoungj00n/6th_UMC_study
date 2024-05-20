@@ -9,6 +9,7 @@ import { specs, swaggerUi } from "./config/swagger.js";
 import { errStatus } from './config/errStatus.js'
 import { io } from './socket.js';
 import mongoose from 'mongoose';
+import { instrument } from '@socket.io/admin-ui'
 
 mongoose.connect(process.env.MONGO_DB)
 .then(() => console.log("connected to database"));
@@ -19,11 +20,19 @@ const app = express();
 let server = http.createServer(app);
 let socket = new Server(server,{
   cors : {
-    origin : "http://localhost:3000"
+    origin : ["http://localhost:3000",
+    "https://admin.socket.io"],
+    credentials: true
   }
 });
 
+
 io(socket);
+
+instrument(socket, {
+  auth: false,
+});
+
 
 app.use(
     cors({
