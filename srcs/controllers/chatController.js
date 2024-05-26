@@ -1,4 +1,4 @@
-import { Chat } from '../models/chat.js'
+/*import { Chat } from '../models/chat.js'
 export let saveChat = async (message, user) => {
     let newMessage = await Chat.create({
         chat : message,
@@ -8,4 +8,4 @@ export let saveChat = async (message, user) => {
         }
     })
     return newMessage;
-}
+}*/
