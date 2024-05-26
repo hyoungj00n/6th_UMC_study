@@ -8,8 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04 # OS 환경
+    //dev 브랜치에 pr로 merge된 경우
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'dev'
-    # pull_request가 dev 브랜치에 merge 됐을 경우
+    
 
     # node-version 과 같이 배열로 돼있으면, 해당 원소를 순회하면서 작업이 반복해서 실행된다.
     # 응용해서 runs-on에 여러 OS에서 돌릴 수도 있다.
