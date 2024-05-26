@@ -1,10 +1,10 @@
-import { errStatus } from '../../config/errStatus'
-import { BaseError } from '../../config/error'
+import { errStatus } from '../../config/errStatus.js'
+import { BaseError } from '../../config/error.js'
 import { response } from '../../config/response.js'
 import { signinResponseDTO } from '../dtos/memberResponseDTO.js'
-import { addUser, setPrefer, getUser, getUserPreferToUserID } from '../models/memberDAO.js'
-const axios = require('axios');
-var puppeteer = require('puppeteer');
+import { addUser, getUser } from '../models/memberDAO.js'
+
+import puppeteer from 'puppeteer';
 
 export const join = async (body) => {
     const birth = new Date(body.birthYear, body.birthMonth, body.birthDay);

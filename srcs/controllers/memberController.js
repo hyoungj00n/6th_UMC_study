@@ -1,9 +1,9 @@
 import { successStatus } from '../../config/successStatus.js';
-import { errStatus } from '../../config/errStatus'
+import { errStatus } from '../../config/errStatus.js'
 import { response } from '../../config/response.js';
-import { BaseError } from '../../config/error'
+import { BaseError } from '../../config/error.js'
 import { join,login } from '../services/memberService.js'
-import { User } from '../models/user.js'
+//import { User } from '../models/user.js'
 
 export const signin = async (req, res) =>{
     //값 잘 들어 왔는지
@@ -23,6 +23,7 @@ export const loginController = {
                 
     }
 }
+/*
 
 export let saveUser = async (userName, sid) => {
     let user = await User.findOne({ name : userName});
@@ -53,3 +54,4 @@ export let checkUser = async (sid) =>{
     return user;
 }
     
+*/

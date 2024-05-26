@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/*import mongoose from "mongoose";
 
 let chatSchema = mongoose.Schema(
   {
@@ -17,3 +17,4 @@ let chatSchema = mongoose.Schema(
 let Chat = mongoose.model("Chat", chatSchema);
 
 export { Chat };
+*/

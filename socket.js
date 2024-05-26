@@ -1,5 +1,5 @@
-import { saveUser, checkUser } from './srcs/controllers/memberController.js';
-import { saveChat } from './srcs/controllers/chatController.js'
+//import { saveUser, checkUser } from './srcs/controllers/memberController.js';
+//import { saveChat } from './srcs/controllers/chatController.js'
 
 export const io = (io) => {
   io.on("connection", (socket) => {
@@ -14,7 +14,7 @@ export const io = (io) => {
     socket.on("newUser" ,async (userName, cb) => {
         console.log("새로운 유저: ", userName);
         //유저 저장
-        let user = await saveUser(userName,socket.id);
+        //let user = await saveUser(userName,socket.id);
         
         cb({ ok : true, data : user}) ;
     })
@@ -24,9 +24,9 @@ export const io = (io) => {
         console.log("메세지: ", message);
 
         //유저 찾기
-        let user = await checkUser(socket.id);
+        //let user = await checkUser(socket.id);
         //채팅 저장
-        let newMessage = await saveChat(message,user);
+        //let newMessage = await saveChat(message,user);
 
         io.emit("message", newMessage)
     })

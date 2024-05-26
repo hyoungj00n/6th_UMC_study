@@ -8,13 +8,15 @@ import { response } from './config/response.js';
 import { specs, swaggerUi } from "./config/swagger.js";
 import { errStatus } from './config/errStatus.js'
 import { io } from './socket.js';
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 import { instrument } from '@socket.io/admin-ui'
 
-mongoose.connect(process.env.MONGO_DB)
-.then(() => console.log("connected to database"));
+dotenv.config();
 
-dotenv.config();    // .env 파일 사용 (환경 변수 관리)
+//mongoose.connect(process.env.MONGO_DB)
+//.then(() => console.log("connected to database"));
+
+    // .env 파일 사용 (환경 변수 관리)
 const app = express();
 
 let server = http.createServer(app);
@@ -57,8 +59,9 @@ app.use(
     swaggerUi.setup(specs, { explorer: true })
 );
 
-
-
+app.get('/test', (req, res) => {
+  res.send('Success');
+});
 app.use('/api/members',memberRouter);
 
 app.use((err, req, res, next) => {

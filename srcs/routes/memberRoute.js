@@ -1,6 +1,6 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import { signin, loginController } from '../controllers/memberController'
+import { signin, loginController } from '../controllers/memberController.js'
 
 export const memberRouter = express.Router();
 
