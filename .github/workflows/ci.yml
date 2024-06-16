@@ -23,9 +23,9 @@ jobs:
     # actions/setup-node: Node.js를 설치한다.
     # run 개념은 명령어를 실행한다. 셸 스크립트와 동일하다.
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       # npm ci는 npm install과 같은 기능을 수행한다.
@@ -36,7 +36,7 @@ jobs:
     
 
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
